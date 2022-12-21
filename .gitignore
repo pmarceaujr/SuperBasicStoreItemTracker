@@ -1,7 +1,7 @@
 # my files
 venv_stor/
 .idea/
-
+zNotes/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -132,3 +132,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
