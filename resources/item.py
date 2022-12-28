@@ -30,6 +30,7 @@ class Item(MethodView):
     @blp.arguments(ItemUpdateSchema)
     @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
+        print("item3")
         item = ItemModel.query.get(item_id)
 
         if item:
@@ -48,15 +49,21 @@ class Item(MethodView):
 class ItemList(MethodView):
     @jwt_required()
     @blp.response(200, ItemSchema(many=True))
+
+
     def get(self):
+        print("In item1")
+        item = ItemModel.query.all()
+        print(item[0])
         return ItemModel.query.all()
 
     @jwt_required(fresh=True)
     @blp.arguments(ItemSchema)
     @blp.response(201, ItemSchema)
     def post(self, item_data):
+        print("In item2")
         item = ItemModel(**item_data)
-
+        print(item)
         try:
             db.session.add(item)
             db.session.commit()
